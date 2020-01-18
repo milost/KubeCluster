@@ -10,10 +10,10 @@ apt-get install -y git htop
 # Update hosts file
 echo "[TASK 1] Updating /etc/hosts file"
 cat >>/etc/hosts<<EOF
-192.168.178.40 kubemaster.synapps.com kubemaster
-192.168.178.41 kubi1.synapps.com kubi1
-192.168.178.42 kubi2.synapps.com kubi2
-192.168.178.43 kubi3.synapps.com kubi3
+172.42.42.100 kubemaster.synapps.com kubemaster
+172.42.42.101 kubi1.synapps.com kubi1
+172.42.42.102 kubi2.synapps.com kubi2
+172.42.42.103 kubi3.synapps.com kubi3
 EOF
 
 # Install Docker

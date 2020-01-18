@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "kmaster" do |kmaster|
     kmaster.vm.box = "ubuntu/xenial64"
     kmaster.vm.hostname = "kubemaster.synapps.com"
-    kmaster.vm.network "public_network", bridge: "eno1" #, ip: "192.168.178.40"
+    kmaster.vm.network "private_network", ip: "172.42.42.100"
     kmaster.vm.provider "virtualbox" do |v|
       v.name = "kmaster"
       v.memory = 4096
@@ -32,7 +32,7 @@ Vagrant.configure("2") do |config|
     config.vm.define "kubi#{i}" do |workernode|
       workernode.vm.box = "ubuntu/xenial64"
       workernode.vm.hostname = "kubi#{i}.synapps.com"
-      workernode.vm.network "public_network", bridge: "eno1" #, ip: "172.42.42.10#{i}"
+      workernode.vm.network "private_network", ip: "172.42.42.10#{i}"
       workernode.vm.provider "virtualbox" do |v|
         v.name = "kubi#{i}"
         v.memory = 2048
