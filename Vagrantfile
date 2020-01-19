@@ -6,6 +6,12 @@
 # performed in serial.
 ENV['VAGRANT_NO_PARALLEL'] = 'yes'
 
+NodeCount = 3
+MasterMemory = 4096
+MasterCpus = 2
+WorkerMemory = 2048
+WorkerCpus = 1
+
 Vagrant.configure("2") do |config|
   config.vm.provider "virtualbox"
 
@@ -19,13 +25,11 @@ Vagrant.configure("2") do |config|
     kmaster.vm.network "private_network", ip: "172.42.42.100"
     kmaster.vm.provider "virtualbox" do |v|
       v.name = "kmaster"
-      v.memory = 4096
-      v.cpus = 2
+      v.memory = MasterMemory
+      v.cpus = MasterCpus
     end
     kmaster.vm.provision "shell", path: "bootstrap_master.sh"
   end
-
-  NodeCount = 3
 
   # Kubernetes Worker Nodes
   (1..NodeCount).each do |i|
@@ -35,8 +39,8 @@ Vagrant.configure("2") do |config|
       workernode.vm.network "private_network", ip: "172.42.42.10#{i}"
       workernode.vm.provider "virtualbox" do |v|
         v.name = "kubi#{i}"
-        v.memory = 2048
-        v.cpus = 1
+        v.memory = WorkerMemory
+        v.cpus = WorkerCpus
       end
       workernode.vm.provision "shell", path: "bootstrap_worker.sh"
     end
