@@ -7,10 +7,10 @@
 ENV['VAGRANT_NO_PARALLEL'] = 'yes'
 
 Vagrant.configure("2") do |config|
+  config.vm.provider "virtualbox"
 
   # Basic box provisioning
   config.vm.provision "shell", path: "bootstrap.sh"
-  
 
   # Kubernetes Master Server
   config.vm.define "kmaster" do |kmaster|
