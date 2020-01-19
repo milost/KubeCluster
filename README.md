@@ -6,8 +6,8 @@ The network will contain one Kubernetes Master VM and 3 Worker VMs.
 
 ## Instructions
 1. `vagrant up` - Create and bring up the cluster
-2. `vagrant ssh kmaster` - connect to Kubernetes master node
-3. `kubectl cluster-info` - retrieve Kubernetes cluster info
+2. `vagrant ssh kmaster` - Connect to Kubernetes master node
+3. `kubectl cluster-info` - Retrieve Kubernetes cluster info
 
 You should see:
 
@@ -18,7 +18,7 @@ KubeDNS is running at https://172.42.42.100:6443/api/v1/namespaces/kube-system/s
 To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 ```
 
-4. `kubectl get nodes` - list all nodes in the Kubernetes cluster
+4. `kubectl get nodes` - List all nodes in the Kubernetes cluster
 
 ```bash
 NAME         STATUS   ROLES    AGE   VERSION
